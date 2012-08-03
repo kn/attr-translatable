@@ -33,7 +33,7 @@ module AttrTranslatable
       end
 
       def validate_attr(attr)
-        raise ArgumentError, "#{attr} is not translatable attribute." unless self.class.valid_translatable_attrs.include?(attr)
+        raise ArgumentError, "#{attr} is not translatable attribute." unless self.class.translatable_attrs.include?(attr)
       end
   end
 end

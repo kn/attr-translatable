@@ -32,9 +32,41 @@ end
 )
 @post.update_translation(:title, :ja, "新しいブログポスト")
 @post.translate(:title, :ja)
-#=> "新しいブログポスト"
+# => "新しいブログポスト"
 @post.t(:title, :ja)
-#=> "新しいブログポスト"
+# => "新しいブログポスト"
+```
+
+## Define Translatable Attributes
+
+You can define translatable as shown below. All translatable attributes must be a string.
+
+```ruby
+attr_translatable :attr_name1, :attr_name2, ...
+```
+
+## Add/Update Translation
+
+```ruby
+update_translation(attr_name, lang, translation)
+```
+
+## Translate Attributes
+
+```ruby
+translate(attr_name, lang)
+# or you can use shorten version:
+t(attr_name, lang)
+```
+
+## Access Translatable Attributes Name
+
+```ruby
+ActiveRecord::Base.translatable_attrs
+# => [:attr1, attr2, ...]
+# For example,
+Post.translatable_attrs
+# => [:title, :content
 ```
 ## Authors
 

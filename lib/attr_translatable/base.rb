@@ -16,8 +16,8 @@ module AttrTranslatable
         end
       end
 
-      def valid_translatable_attrs
-        @valid_translatable_attrs || []
+      def translatable_attrs
+        @translatable_attrs || []
       end
 
       private
