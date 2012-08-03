@@ -33,6 +33,8 @@ end
 @post.update_translation(:title, :ja, "新しいブログポスト")
 @post.translate(:title, :ja)
 #=> "新しいブログポスト"
+@post.t(:title, :ja)
+#=> "新しいブログポスト"
 ```
 ## Authors
 
