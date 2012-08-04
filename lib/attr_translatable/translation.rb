@@ -28,7 +28,7 @@ module AttrTranslatable
       def internal_translate(attr, lang)
         attr, lang = [attr.to_s, lang.to_s]
         validate_attr(attr)
-        at = AttrTranslation.select(:translation).where(attr: attr, lang: lang, model_id: self.id, model_type: self.class.name).first
+        at = AttrTranslation.select(:translation).where(:attr => attr, :lang => lang, :model_id => self.id, :model_type => self.class.name).first
         at ? at.translation : self.send(attr)
       end
 

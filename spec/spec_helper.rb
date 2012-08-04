@@ -6,8 +6,8 @@ require 'sqlite3'
 require 'attr_translatable'
 
 ActiveRecord::Base.establish_connection(
-  adapter: "sqlite3",
-  database: ":memory:"
+  :adapter => "sqlite3",
+  :database => ":memory:"
 )
 
 RSpec.configure do |config|
@@ -26,11 +26,11 @@ ActiveRecord::Schema.define do
     t.string      :translation
     t.string      :lang
     t.string      :attr
-    t.references  :model, polymorphic: true
+    t.references  :model, :polymorphic => true
     t.timestamps
   end
 
-  add_index :attr_translations, [:lang, :attr, :model_id, :model_type], unique: true, name: "index_attr_translations_on_attr_and_lang_and_model"
+  add_index :attr_translations, [:lang, :attr, :model_id, :model_type], :unique => true, :name => "index_attr_translations_on_attr_and_lang_and_model"
 
   create_table :posts do |t|
     t.string  :title

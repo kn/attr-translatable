@@ -24,10 +24,31 @@ describe ActiveRecord::Base do
       Post.attr_translatable :title, :content
     end
 
+    describe "#translatable_attrs" do
+      it "returns translatable attributes" do
+        Post.translatable_attrs.should == ["title", "content"]
+      end
+    end
+
     describe "#update_translation" do
       context "when non translatable attribute is given" do
         it "raises an error" do
           lambda { @post.update_translation(:url, :ja, "アドレス") }.should raise_error ArgumentError
+        end
+      end
+      context "when translatable attribute is given" do
+        it "adds new translation" do
+          translation = "ブログのタイトル"
+          @post.update_translation(:title, :ja, translation)
+          @post.t(:title, :ja).should == translation
+        end
+        it "updates existing translation" do
+          translation = "ブログのタイトル"
+          @post.update_translation(:title, :ja, translation)
+          @post.t(:title, :ja).should == translation
+          translation = "新しいブログのタイトル"
+          @post.update_translation(:title, :ja, translation)
+          @post.t(:title, :ja).should == translation
         end
       end
     end

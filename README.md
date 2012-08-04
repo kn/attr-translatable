@@ -63,10 +63,10 @@ t(attr_name, lang)
 
 ```ruby
 ActiveRecord::Base.translatable_attrs
-# => [:attr1, attr2, ...]
+# => ["attr1", "attr2", ...]
 # For example,
 Post.translatable_attrs
-# => [:title, :content
+# => ["title", "content"]
 ```
 ## Authors
 
