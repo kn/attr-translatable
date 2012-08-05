@@ -28,7 +28,7 @@ module AttrTranslatable
             a = a.to_s
             raise ArgumentError, "#{a} is not an attribute of #{self.name}." unless valid_attrs.include?(a)
             type = columns.find { |c| c.name == a }.type
-            raise ArgumentError, "Only a string type can be translatable." unless type == :string
+            raise ArgumentError, "#{a} has a #{type} type. Only a string type can be translatable." unless [:string, :text].include? type
             a
           end
         end
