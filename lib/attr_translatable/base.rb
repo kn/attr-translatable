@@ -11,7 +11,7 @@ module AttrTranslatable
         attrs = validate_attrs(args)
         unless ancestors.include?(AttrTranslatable::Translation)
           @translatable_attrs = attrs
-          has_many :attr_translatables, :as => :model, :dependent => :destroy
+          has_many :attr_translations, :as => :model, :dependent => :destroy
           include AttrTranslatable::Translation
         end
       end

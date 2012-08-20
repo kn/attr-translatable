@@ -1,3 +1,5 @@
+* Fix association bug.
+
 === 0.1.2
 
 * Change translation type from string to text.
