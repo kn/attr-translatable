@@ -30,11 +30,16 @@ end
   content: "attr-translatable is awesome!",
   author: "Katsuya Noguchi"
 )
+
 @post.update_translation(:title, :ja, "新しいブログポスト")
 @post.translate(:title, :ja)
 # => "新しいブログポスト"
+
 @post.t(:title, :ja)
 # => "新しいブログポスト"
+
+@post.translated_all?(:ja)
+# => false
 ```
 
 ## Define Translatable Attributes
