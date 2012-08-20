@@ -3,7 +3,7 @@
 class CreateAttrTranslations < ActiveRecord::Migration
   def self.change
     create_table :attr_translations do |t|
-      t.string      :translation
+      t.text        :translation
       t.string      :lang
       t.string      :attr
       t.references  :model, polymorphic: true
