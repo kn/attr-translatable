@@ -80,5 +80,18 @@ describe ActiveRecord::Base do
         end
       end
     end
+
+    describe "#translated_all?" do
+      it "returns false if not all translatable attr is translated" do
+        @post.translated_all?(:ja).should be_false
+        @post.update_translation(:title, :ja, "ブログのタイトル")
+        @post.translated_all?(:ja).should be_false
+      end
+      it "returns true if all translatable attr is translated" do
+        @post.update_translation(:title, :ja, "ブログのタイトル")
+        @post.update_translation(:content, :ja, "ブログのコンテンツ")
+        @post.translated_all?(:ja).should be_true
+      end
+    end
   end
 end

@@ -15,6 +15,13 @@ module AttrTranslatable
       internal_translate(attr, lang)
     end
 
+    def translated_all?(lang)
+      lang = lang.to_s
+      self.class.translatable_attrs.all? do |attr|
+        AttrTranslation.exists? :attr => attr, :lang => lang, :model_id => self.id, :model_type => self.class.name
+      end
+    end
+
     private
       
       def new_translation(attr, lang, translation)
